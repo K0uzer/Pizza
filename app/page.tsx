@@ -1,10 +1,16 @@
-import { Button } from "@/components/ui/button";
+import React from 'react'
 
-export default function Home() {
-  return (
-    <div>
-      <h1>Welcome to my website</h1>
-      <Button variant='outline'>Кнопка</Button>
-    </div>
-  );
+import { Container, Title, Categories } from '@/components/shared'
+
+const Home = () => {
+    return (
+        <>
+            <Container className="mt-10">
+                <Title text="Все пиццы" size="lg" />
+                <Categories />
+            </Container>
+        </>
+    )
 }
+
+export default Home
