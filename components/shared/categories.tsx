@@ -40,4 +40,4 @@ const Categories: React.FC<Props> = ({ className }) => {
     )
 }
 
-export default Categories
+export { Categories }
