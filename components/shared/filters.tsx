@@ -1,5 +1,12 @@
 import React from 'react'
-import { Title } from './index'
+
+import {
+    Title,
+    FilterCheckbox,
+    RangeSlider,
+    CheckboxFiltersGroup,
+} from './index'
+import { Input } from '../ui'
 
 interface Props {
     className?: string
@@ -14,6 +21,18 @@ const Filters: React.FC<Props> = ({ className }) => {
                 <FilterCheckbox text="Можно собирать" value="1" />
                 <FilterCheckbox text="Новинки" value="2" />
             </div>
+
+            <div className="mt-5 border-y border-y-neutral-100 py-6 pb-7">
+                <p className="font-bold mb-3">Цена от и до</p>
+                <div className="flex gap-3 mb-5">
+                    <Input type="number" min={0} max={30000} defaultValue={0} />
+                    <Input type="number" min={100} placeholder="5000" />
+                </div>
+
+                <RangeSlider min={0} max={5000} step={100} value={[0, 5000]} />
+            </div>
+
+            <CheckboxFiltersGroup />
         </div>
     )
 }
