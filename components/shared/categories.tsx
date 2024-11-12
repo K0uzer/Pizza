@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import { cn } from '@/lib/utils'
 
@@ -14,9 +15,9 @@ const cats = [
     'Напитки',
     'Десерты',
 ]
-const activeIndex = 0
 
 const Categories: React.FC<Props> = ({ className }) => {
+    const categoryActiveId = useCategoryStore((state) => state.activeId)
     return (
         <div
             className={cn(
@@ -28,7 +29,7 @@ const Categories: React.FC<Props> = ({ className }) => {
                 <a
                     className={cn(
                         'flex items-center font-bold h-11 rounded-2xl px-5',
-                        activeIndex === index &&
+                        categoryActiveId === index + 1 &&
                             'bg-white shadow-md shadow-gray-200 text-primary',
                     )}
                     key={cat}

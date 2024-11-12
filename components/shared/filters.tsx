@@ -32,7 +32,63 @@ const Filters: React.FC<Props> = ({ className }) => {
                 <RangeSlider min={0} max={5000} step={100} value={[0, 5000]} />
             </div>
 
-            <CheckboxFiltersGroup />
+            <CheckboxFiltersGroup
+                title="Ингредиенты"
+                className="mt-5"
+                limit={4}
+                defaultItems={[
+                    {
+                        text: 'Сырный соус',
+                        value: '1',
+                    },
+                    {
+                        text: 'Моццарелла',
+                        value: '2',
+                    },
+                    {
+                        text: 'Чеснок',
+                        value: '3',
+                    },
+                    {
+                        text: 'Солённые огурчики',
+                        value: '4',
+                    },
+                    {
+                        text: 'Красный лук',
+                        value: '5',
+                    },
+                    {
+                        text: 'Томаты',
+                        value: '6',
+                    },
+                ]}
+                items={[
+                    {
+                        text: 'Сырный соус',
+                        value: '1',
+                    },
+                    {
+                        text: 'Моццарелла',
+                        value: '2',
+                    },
+                    {
+                        text: 'Чеснок',
+                        value: '3',
+                    },
+                    {
+                        text: 'Солённые огурчики',
+                        value: '4',
+                    },
+                    {
+                        text: 'Красный лук',
+                        value: '5',
+                    },
+                    {
+                        text: 'Томаты',
+                        value: '6',
+                    },
+                ]}
+            />
         </div>
     )
 }
