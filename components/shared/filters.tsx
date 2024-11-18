@@ -1,4 +1,4 @@
-import React from 'react'
+import { FC } from 'react'
 
 import {
     Title,
@@ -12,7 +12,7 @@ interface Props {
     className?: string
 }
 
-const Filters: React.FC<Props> = ({ className }) => {
+const Filters: FC<Props> = ({ className }) => {
     return (
         <div className={className}>
             <Title text="Фильтрация" size="sm" className="mb-5 font-bold" />

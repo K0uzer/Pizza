@@ -1,4 +1,4 @@
-import React from 'react'
+import { FC } from 'react'
 
 import { Categories, Container, SortPopup } from './index'
 import { cn } from '@/lib/utils'
@@ -7,7 +7,7 @@ interface Props {
     className?: string
 }
 
-const TopBar: React.FC<Props> = ({ className }) => {
+const TopBar: FC<Props> = ({ className }) => {
     return (
         <div
             className={cn(

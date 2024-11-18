@@ -1,4 +1,4 @@
-import React from 'react'
+import { FC } from 'react'
 import Link from 'next/link'
 import { Plus } from 'lucide-react'
 
@@ -13,7 +13,7 @@ interface ProductCardProps {
     className?: string
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({
+const ProductCard: FC<ProductCardProps> = ({
     id,
     name,
     price,

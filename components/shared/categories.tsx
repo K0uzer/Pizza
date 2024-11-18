@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import { FC } from 'react'
 
 import { cn } from '@/lib/utils'
 import { useCategoryStore } from '@/store/cateroty'
@@ -18,7 +18,7 @@ const cats = [
     'Десерты',
 ]
 
-const Categories: React.FC<Props> = ({ className }) => {
+const Categories: FC<Props> = ({ className }) => {
     const categoryActiveId = useCategoryStore((state) => state.activeId)
     return (
         <div

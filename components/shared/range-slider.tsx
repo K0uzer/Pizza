@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import { forwardRef, Fragment, RefObject, useEffect, useState } from 'react'
 import * as SliderPrimitive from '@radix-ui/react-slider'
 
 import { cn } from '@/lib/utils'
@@ -15,7 +15,7 @@ type SliderProps = {
     onValueChange?: (values: number[]) => void
 }
 
-const RangeSlider = React.forwardRef(
+const RangeSlider = forwardRef(
     (
         {
             className,
@@ -30,9 +30,9 @@ const RangeSlider = React.forwardRef(
         ref,
     ) => {
         const initialValue = Array.isArray(value) ? value : [min, max]
-        const [localValues, setLocalValues] = React.useState(initialValue)
+        const [localValues, setLocalValues] = useState(initialValue)
 
-        React.useEffect(() => {
+        useEffect(() => {
             setLocalValues(Array.isArray(value) ? value : [min, max])
         }, [min, max, value])
 
@@ -45,7 +45,7 @@ const RangeSlider = React.forwardRef(
 
         return (
             <SliderPrimitive.Root
-                ref={ref as React.RefObject<HTMLDivElement>}
+                ref={ref as RefObject<HTMLDivElement>}
                 min={min}
                 max={max}
                 step={step}
@@ -61,7 +61,7 @@ const RangeSlider = React.forwardRef(
                     <SliderPrimitive.Range className="absolute h-full bg-primary" />
                 </SliderPrimitive.Track>
                 {localValues.map((value, index) => (
-                    <React.Fragment key={index}>
+                    <Fragment key={index}>
                         <div
                             className="absolute text-center"
                             style={{
@@ -76,7 +76,7 @@ const RangeSlider = React.forwardRef(
                             </span>
                         </div>
                         <SliderPrimitive.Thumb className="block h-4 w-4 rounded-full border border-primary/50 bg-white shadow transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50" />
-                    </React.Fragment>
+                    </Fragment>
                 ))}
             </SliderPrimitive.Root>
         )

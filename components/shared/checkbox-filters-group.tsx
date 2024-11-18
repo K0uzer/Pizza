@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import { useState, FC } from 'react'
 
 import { Input } from '../ui'
 import { FilterCheckbox } from './index'
@@ -18,7 +18,7 @@ interface CheckboxFiltersGroupProps {
     className?: string
 }
 
-const CheckboxFiltersGroup: React.FC<CheckboxFiltersGroupProps> = ({
+const CheckboxFiltersGroup: FC<CheckboxFiltersGroupProps> = ({
     title,
     items,
     defaultItems,

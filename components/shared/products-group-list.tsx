@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useRef } from 'react'
+import { useEffect, useRef, FC } from 'react'
 import { useIntersection } from 'react-use'
 
 import { cn } from '@/lib/utils'
@@ -14,7 +14,7 @@ interface ProductsGroupListProps {
     categoryId: number
 }
 
-const ProductsGroupList: React.FC<ProductsGroupListProps> = ({
+const ProductsGroupList: FC<ProductsGroupListProps> = ({
     title,
     products,
     className,
