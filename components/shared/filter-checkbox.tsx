@@ -1,4 +1,4 @@
-import React from 'react'
+import { FC } from 'react'
 import { Checkbox } from '../ui'
 
 export interface FilterCheckboxProps {
@@ -9,7 +9,7 @@ export interface FilterCheckboxProps {
     checked?: boolean
 }
 
-const FilterCheckbox: React.FC<FilterCheckboxProps> = ({
+const FilterCheckbox: FC<FilterCheckboxProps> = ({
     text,
     value,
     endAdornment,

@@ -1,30 +1,44 @@
-import React from 'react'
+import { FC } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { ArrowRight, ShoppingCart, User } from 'lucide-react'
 
 import { Button } from '../ui'
 import { Container } from './container'
 import { cn } from '@/lib/utils'
+import { SearchInput } from './search-input'
 
 interface Props {
     className?: string
 }
 
-const Header: React.FC<Props> = ({ className }) => {
+const Header: FC<Props> = ({ className }) => {
     return (
         <header className={cn('border border-b', className)}>
             <Container className="flex items-center justify-between py-8">
-                <div className="flex items-center gap-4">
-                    <Image src="/logo.png" alt="Logo" width={35} height={35} />
-                    <div>
-                        <h1 className="text-2xl uppercase font-black">
-                            Delicious Pizza
-                        </h1>
-                        <p className="text-sm text-gray-400 leading-3">
-                            вкусней уже некуда
-                        </p>
+                <Link href="/">
+                    <div className="flex items-center gap-4">
+                        <Image
+                            src="/logo.png"
+                            alt="Logo"
+                            width={35}
+                            height={35}
+                        />
+                        <div>
+                            <h1 className="text-2xl uppercase font-black">
+                                Delicious Pizza
+                            </h1>
+                            <p className="text-sm text-gray-400 leading-3">
+                                вкусней уже некуда
+                            </p>
+                        </div>
                     </div>
+                </Link>
+
+                <div className="w-[50%] pl-2 pr-2">
+                    <SearchInput />
                 </div>
+
                 <div className="flex items-center gap-3">
                     <Button
                         variant="outline"

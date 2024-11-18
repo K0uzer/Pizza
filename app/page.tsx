@@ -3,7 +3,6 @@ import React from 'react'
 import {
     Container,
     Filters,
-    ProductCard,
     ProductsGroupList,
     Title,
     TopBar,
