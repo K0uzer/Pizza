@@ -21,14 +21,23 @@ const SearchInput: FC<SearchInputProps> = ({ className }) => {
     useClickAway(ref, () => setFocused(false))
 
     useDebounce(
-        () => {
-            Api.products.search(searchQuery).then((items) => {
-                setProducts(items)
-            })
+        async () => {
+            try {
+                const resolve = await Api.products.search(searchQuery)
+                setProducts(resolve)
+            } catch (error) {
+                console.error(error)
+            }
         },
         250,
         [searchQuery],
     )
+
+    const returnInDefaultState = () => {
+        setSearchQuery('')
+        setFocused(false)
+        setProducts([])
+    }
 
     return (
         <>
@@ -63,6 +72,7 @@ const SearchInput: FC<SearchInputProps> = ({ className }) => {
                             <Link
                                 key={product.id}
                                 className="flex items-center gap-5 px-3 pe-2 hover:bg-primary/10"
+                                onClick={returnInDefaultState}
                                 href={`/product/${product.id}`}
                             >
                                 <img

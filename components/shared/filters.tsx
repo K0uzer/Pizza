@@ -7,12 +7,18 @@ import {
     CheckboxFiltersGroup,
 } from './index'
 import { Input } from '../ui'
+import { useFilterIngredients } from '@/hooks/useFilterIngredients'
+import { Ingredient } from '@prisma/client'
 
-interface Props {
+interface FiltersProps {
     className?: string
 }
 
-const Filters: FC<Props> = ({ className }) => {
+const Filters: FC<FiltersProps> = ({ className }) => {
+    const { ingredients } = useFilterIngredients()
+
+    const filtersArray = ingredients.map(({id, name}) => {value: id, text: name})
+
     return (
         <div className={className}>
             <Title text="Фильтрация" size="sm" className="mb-5 font-bold" />
@@ -36,58 +42,8 @@ const Filters: FC<Props> = ({ className }) => {
                 title="Ингредиенты"
                 className="mt-5"
                 limit={4}
-                defaultItems={[
-                    {
-                        text: 'Сырный соус',
-                        value: '1',
-                    },
-                    {
-                        text: 'Моццарелла',
-                        value: '2',
-                    },
-                    {
-                        text: 'Чеснок',
-                        value: '3',
-                    },
-                    {
-                        text: 'Солённые огурчики',
-                        value: '4',
-                    },
-                    {
-                        text: 'Красный лук',
-                        value: '5',
-                    },
-                    {
-                        text: 'Томаты',
-                        value: '6',
-                    },
-                ]}
-                items={[
-                    {
-                        text: 'Сырный соус',
-                        value: '1',
-                    },
-                    {
-                        text: 'Моццарелла',
-                        value: '2',
-                    },
-                    {
-                        text: 'Чеснок',
-                        value: '3',
-                    },
-                    {
-                        text: 'Солённые огурчики',
-                        value: '4',
-                    },
-                    {
-                        text: 'Красный лук',
-                        value: '5',
-                    },
-                    {
-                        text: 'Томаты',
-                        value: '6',
-                    },
-                ]}
+                defaultItems={filtersArray.slice(0,6)}
+                items={filtersArray}
             />
         </div>
     )

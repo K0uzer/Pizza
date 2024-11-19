@@ -4,4 +4,4 @@ const page = ({ params: { id } }: { params: { id: string } }) => {
     return <div>Product {id}</div>
 }
 
-export { page }
+export default page
