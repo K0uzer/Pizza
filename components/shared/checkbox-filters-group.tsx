@@ -1,7 +1,7 @@
 'use client'
 import { useState, FC } from 'react'
 
-import { Input } from '../ui'
+import { Input, Skeleton } from '../ui'
 import { FilterCheckbox } from './index'
 import { FilterCheckboxProps } from './filter-checkbox'
 
@@ -10,12 +10,15 @@ type Item = FilterCheckboxProps
 interface CheckboxFiltersGroupProps {
     title: string
     items: Item[]
-    defaultItems: Item[]
-    limit: number
+    defaultItems?: Item[]
+    limit?: number
+    loading?: boolean
     searchInputPlaceholder?: string
-    onChange?: (value: string[]) => void
+    onClickCheckBox?: (id: string) => void
     defaultValue?: string[]
+    selectedIds: Set<string>
     className?: string
+    name: string
 }
 
 const CheckboxFiltersGroup: FC<CheckboxFiltersGroupProps> = ({
@@ -24,9 +27,11 @@ const CheckboxFiltersGroup: FC<CheckboxFiltersGroupProps> = ({
     defaultItems,
     limit = 5,
     searchInputPlaceholder = 'Поиск...',
+    loading,
     className,
-    onChange,
-    defaultValue,
+    onClickCheckBox,
+    selectedIds,
+    name,
 }) => {
     const [showAll, setShowAll] = useState(false)
     const [searchValue, setSearchValue] = useState('')
@@ -35,12 +40,25 @@ const CheckboxFiltersGroup: FC<CheckboxFiltersGroupProps> = ({
         ? items.filter((item) =>
               item.text.toLowerCase().includes(searchValue.toLowerCase()),
           )
-        : defaultItems?.slice(0, limit)
+        : (defaultItems || items)?.slice(0, limit)
 
-    const onChangeSearchInput = (
-        event: React.ChangeEvent<HTMLInputElement>,
-    ) => {
+    const onChangeSearchInput = (event: React.ChangeEvent<HTMLInputElement>) =>
         setSearchValue(event.target.value)
+
+    if (loading) {
+        return (
+            <div className={className}>
+                <p className="font-bold mb-3">{title}</p>
+                {Array(limit)
+                    .fill(0)
+                    .map((_, index) => (
+                        <Skeleton
+                            key={index}
+                            className="h-6 mb-4 rounded-[10px]"
+                        />
+                    ))}
+            </div>
+        )
     }
 
     return (
@@ -61,11 +79,14 @@ const CheckboxFiltersGroup: FC<CheckboxFiltersGroupProps> = ({
                 {listItems.map((item, index) => (
                     <FilterCheckbox
                         key={index}
+                        name={name}
                         text={item.text}
                         value={item.value}
                         endAdornment={item.endAdornment}
-                        checked={false}
-                        onCheckedChange={() => item.onCheckedChange}
+                        checked={selectedIds.has(item.value ?? '')}
+                        onCheckedChange={() =>
+                            onClickCheckBox?.(item.value || '')
+                        }
                     />
                 ))}
             </div>
