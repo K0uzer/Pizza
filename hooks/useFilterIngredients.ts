@@ -31,13 +31,6 @@ export const useFilterIngredients = (): useFilterIngredientsProps => {
         }
 
         fetchIngredients()
-
-        const setSelectedIngredients = (ids: string[]) => {
-            ids.forEach((id) => {
-                
-            }
-        }
-
     }, [])
     return { ingredients, isLoading, toggleTypes: toggle, selectedIngredients }
 }
