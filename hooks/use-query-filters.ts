@@ -6,7 +6,6 @@ import { Filters } from './use-filters'
 
 const useQueryFilters = (filters: Filters) => {
     const router = useRouter()
-    console.log(filters)
     useEffect(() => {
         const params = {
             ...filters.prices,

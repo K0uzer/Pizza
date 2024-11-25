@@ -7,11 +7,11 @@ import { ProductCard, Title } from './index'
 import { useCategoryStore } from '@/store/cateroty'
 
 interface ProductsGroupListProps {
+    categoryId: number
     title: string
     products: any[]
     className?: string
     listClassName?: string
-    categoryId: number
 }
 
 const ProductsGroupList: FC<ProductsGroupListProps> = ({
@@ -21,17 +21,18 @@ const ProductsGroupList: FC<ProductsGroupListProps> = ({
     listClassName,
     categoryId,
 }) => {
+    console.log(products, 'ProductsGroupList')
     const setActiveCategoryId = useCategoryStore((state) => state.setActiveId)
     const intersectionRef = useRef(null)
     const intersection = useIntersection(intersectionRef, {
         threshold: 0.4,
     })
-
     useEffect(() => {
         if (intersection?.isIntersecting) {
             setActiveCategoryId(categoryId)
         }
     }, [categoryId, intersection?.isIntersecting, setActiveCategoryId, title])
+
     return (
         <div className={className} id={title} ref={intersectionRef}>
             <Title text={title} size="lg" className="font-extrabold mb-5" />
