@@ -9,7 +9,7 @@ import { useCategoryStore } from '@/store/cateroty'
 interface ProductsGroupListProps {
     categoryId: number
     title: string
-    products: any[]
+    products: unknown[]
     className?: string
     listClassName?: string
 }
@@ -21,7 +21,6 @@ const ProductsGroupList: FC<ProductsGroupListProps> = ({
     listClassName,
     categoryId,
 }) => {
-    console.log(products, 'ProductsGroupList')
     const setActiveCategoryId = useCategoryStore((state) => state.setActiveId)
     const intersectionRef = useRef(null)
     const intersection = useIntersection(intersectionRef, {
@@ -44,7 +43,7 @@ const ProductsGroupList: FC<ProductsGroupListProps> = ({
                         id={product.id}
                         imageUrl={product.imageUrl}
                         name={product.name}
-                        price={product.items[0].price}
+                        price={product?.variants[0].price}
                     />
                 ))}
             </div>

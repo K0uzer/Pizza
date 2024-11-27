@@ -17,7 +17,7 @@ const TopBar: FC<Props> = ({ categories, className }) => {
                 className,
             )}
         >
-            <Container>
+            <Container className="flex justify-between">
                 <Categories items={categories} />
                 <SortPopup />
             </Container>

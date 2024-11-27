@@ -23,7 +23,6 @@ const Home = async () => {
 
     const noIdleCategory = categories.filter((item) => item.products.length)
 
-    // console.log(noIdleCategory)
     return (
         <>
             <Container className="mt-10">
@@ -42,17 +41,14 @@ const Home = async () => {
                     {/* Пиццы */}
                     <div className="flex-1">
                         <div className="flex flex-col gap-16">
-                            {noIdleCategory.map((category) => {
-                                console.log(category.products, 'page')
-                                return (
-                                    <ProductsGroupList
-                                        key={category.id}
-                                        categoryId={category.id}
-                                        title={category.name}
-                                        products={category.products}
-                                    />
-                                )
-                            })}
+                            {noIdleCategory.map((category) => (
+                                <ProductsGroupList
+                                    key={category.id}
+                                    categoryId={category.id}
+                                    title={category.name}
+                                    products={category.products}
+                                />
+                            ))}
                         </div>
                     </div>
                 </div>

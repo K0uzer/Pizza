@@ -3,6 +3,7 @@ import { FC } from 'react'
 import { Category } from '@prisma/client'
 import { useCategoryStore } from '@/store/cateroty'
 import { cn } from '@/lib/utils'
+import Link from 'next/link'
 
 interface Props {
     items: Category[]
@@ -11,6 +12,7 @@ interface Props {
 
 const Categories: FC<Props> = ({ items, className }) => {
     const categoryActiveId = useCategoryStore((state) => state.activeId)
+
     return (
         <div
             className={cn(
@@ -18,17 +20,18 @@ const Categories: FC<Props> = ({ items, className }) => {
                 className,
             )}
         >
-            {items.map((category, index) => (
-                <a
+            {items.map(({ id, name }) => (
+                <Link
                     className={cn(
                         'flex items-center font-bold h-11 rounded-2xl px-5',
-                        categoryActiveId === index + 1 &&
+                        categoryActiveId === id &&
                             'bg-white shadow-md shadow-gray-200 text-primary',
                     )}
-                    key={category.id}
+                    key={id}
+                    href={`/#${name}`}
                 >
-                    <button>{category.name}</button>
-                </a>
+                    <button>{name}</button>
+                </Link>
             ))}
         </div>
     )
