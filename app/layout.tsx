@@ -16,9 +16,9 @@ export default function GlobalLayout({
 }>) {
     return (
         <html lang="en">
-            <header>
+            <head>
                 <link data-rh="true" rel="icon" href="/logo.png" />
-            </header>
+            </head>
             <body className={nunito.className}>
                 <main className={nunito.className}>{children}</main>
             </body>
