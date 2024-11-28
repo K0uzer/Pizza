@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils'
 import { Product } from '@prisma/client'
 
 import { Dialog, DialogContent } from '@/components/ui/dialog'
-import { Title } from '../title'
+import ChoosePizzaForm from '../forms/choose-pizza-form'
 
 interface ChooseProductModalProps {
     className?: string
@@ -26,7 +26,12 @@ const ChooseProductModal: FC<ChooseProductModalProps> = ({
                     className,
                 )}
             >
-                <Title text={product.name} />
+                <ChoosePizzaForm
+                    imageUrl={product.imageUrl}
+                    ingredients={[]}
+                    name={product.name}
+                    className=""
+                />
             </DialogContent>
         </Dialog>
     )
