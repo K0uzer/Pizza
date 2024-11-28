@@ -1,0 +1,52 @@
+'use client'
+import { FC } from 'react'
+
+import { cn } from '@/lib/utils'
+
+type Variant = {
+    name: string
+    value: string
+    disabled?: boolean
+}
+
+interface GroupVariantsProps {
+    className?: string
+    items: readonly Variant[]
+    defaultValue?: string
+    onClick?: (value: Variant['value']) => void
+    selectedValued?: Variant['value']
+}
+
+export const GroupVariants: FC<GroupVariantsProps> = ({
+    className,
+    items,
+    onClick,
+    defaultValue,
+    selectedValued,
+}) => {
+    return (
+        <div
+            className={cn(
+                'flex justify-between bg-[#e9e9e9] rounded-3xl p-1 select-none',
+                className,
+            )}
+        >
+            {items.map((item) => (
+                <button
+                    key={item.name}
+                    onClick={() => onClick?.(item.value)}
+                    className={cn(
+                        'flex items-center justify-center cursor-pointer h-[30px] px-5 flex-1 rounded-3xl transition-all duration-400 text-sm',
+                        {
+                            'bg-white shadow': item.value === selectedValued,
+                            'text-gray-500 opacity-50 pointer-events-none':
+                                item.disabled,
+                        },
+                    )}
+                >
+                    {item.name}
+                </button>
+            ))}
+        </div>
+    )
+}

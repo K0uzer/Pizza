@@ -41,12 +41,12 @@ const Home = async () => {
                     {/* Пиццы */}
                     <div className="flex-1">
                         <div className="flex flex-col gap-16">
-                            {noIdleCategory.map((category) => (
+                            {noIdleCategory.map(({ id, name, products }) => (
                                 <ProductsGroupList
-                                    key={category.id}
-                                    categoryId={category.id}
-                                    title={category.name}
-                                    products={category.products}
+                                    key={id}
+                                    categoryId={id}
+                                    title={name}
+                                    products={products}
                                 />
                             ))}
                         </div>

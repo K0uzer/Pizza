@@ -37,15 +37,27 @@ const ProductsGroupList: FC<ProductsGroupListProps> = ({
             <Title text={title} size="lg" className="font-extrabold mb-5" />
 
             <div className={cn('grid grid-cols-3 gap-[50px]', listClassName)}>
-                {products.map((product) => (
-                    <ProductCard
-                        key={product.id}
-                        id={product.id}
-                        imageUrl={product.imageUrl}
-                        name={product.name}
-                        price={product?.variants[0].price}
-                    />
-                ))}
+                {products.map(
+                    ({
+                        id,
+                        imageUrl,
+                        name,
+                        variants,
+                    }: {
+                        id: number
+                        imageUrl: string
+                        name: string
+                        variants: number[]
+                    }) => (
+                        <ProductCard
+                            key={id}
+                            id={id}
+                            imageUrl={imageUrl}
+                            name={name}
+                            price={variants[0].price}
+                        />
+                    ),
+                )}
             </div>
         </div>
     )
