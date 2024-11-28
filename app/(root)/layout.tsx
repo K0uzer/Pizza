@@ -1,20 +1,24 @@
 import type { Metadata } from 'next'
+import { ReactNode } from 'react'
 
 import { Header } from '@/components/shared'
 
 export const metadata: Metadata = {
-    title: 'Delicious Pizza | Главная страница',
+    title: 'Delicious Pizza | Главная',
 }
 
 export default function RootLayout({
     children,
+    modal,
 }: Readonly<{
-    children: React.ReactNode
+    children: ReactNode
+    modal: ReactNode
 }>) {
     return (
         <main className="main-h-screen">
             <Header />
             {children}
+            {modal}
         </main>
     )
 }
