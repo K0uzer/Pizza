@@ -9,7 +9,7 @@ import {
     Title,
 } from '@/components/shared'
 
-const page = async ({ params: { id } }: { params: { id: string } }) => {
+const ProductPage = async ({ params: { id } }: { params: { id: string } }) => {
     const product = await prisma.product.findFirst({
         where: { id: Number(id) },
     })
@@ -58,4 +58,4 @@ const page = async ({ params: { id } }: { params: { id: string } }) => {
     )
 }
 
-export default page
+export default ProductPage
