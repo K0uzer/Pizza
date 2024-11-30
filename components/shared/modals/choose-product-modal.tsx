@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'
 import { cn } from '@/lib/utils'
 import { Product } from '@prisma/client'
 
-import { Dialog, DialogContent } from '@/components/ui/dialog'
+import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog'
 import ChoosePizzaForm from '../forms/choose-pizza-form'
 
 interface ChooseProductModalProps {
@@ -22,10 +22,11 @@ const ChooseProductModal: FC<ChooseProductModalProps> = ({
         <Dialog open={Boolean(product)} onOpenChange={() => router.back()}>
             <DialogContent
                 className={cn(
-                    'p-0 w-[1060px] min-h-[500px] bg-white overflow-hidden',
                     className,
+                    'p-0 w-[1060px] max-w-[1060px] min-h-[500px] bg-white overflow-hidden',
                 )}
             >
+                <DialogTitle />
                 <ChoosePizzaForm
                     imageUrl={product.imageUrl}
                     ingredients={[]}
