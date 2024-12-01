@@ -36,17 +36,17 @@ const ProductCard: FC<ProductCardProps> = ({
                     Цыпленок, моцарелла, сыры чеддер и пармезан, сырный соус,
                     томаты, соус альфредо, чеснок
                 </p>
-
-                <div className="flex justify-between items-center mt-4">
-                    <span>
-                        от <b>{price} ₽</b>
-                    </span>
-                    <Button>
-                        <Plus size={20} className="w-5 h-5 mr-1" />
-                        Добавить
-                    </Button>
-                </div>
             </Link>
+
+            <div className="flex justify-between items-center mt-4">
+                <span>
+                    от <b>{price} ₽</b>
+                </span>
+                <Button>
+                    <Plus size={20} className="w-5 h-5 mr-1" />
+                    Добавить
+                </Button>
+            </div>
         </div>
     )
 }

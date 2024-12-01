@@ -2,14 +2,14 @@
 import { FC } from 'react'
 import { useRouter } from 'next/navigation'
 import { cn } from '@/lib/utils'
-import { Product } from '@prisma/client'
 
+import { ProductWithRelations } from '@/@types/prisma'
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog'
-import ChoosePizzaForm from '../forms/choose-pizza-form'
+import ChoosePizzaForm from '../forms/choose-product-form'
 
 interface ChooseProductModalProps {
     className?: string
-    product: Product
+    product: ProductWithRelations
 }
 
 const ChooseProductModal: FC<ChooseProductModalProps> = ({
@@ -17,6 +17,9 @@ const ChooseProductModal: FC<ChooseProductModalProps> = ({
     product,
 }) => {
     const router = useRouter()
+    const { imageUrl, name } = product
+
+    const isPizzaForm = Boolean(product.variants[0].pizzaType)
 
     return (
         <Dialog open={Boolean(product)} onOpenChange={() => router.back()}>
@@ -26,13 +29,17 @@ const ChooseProductModal: FC<ChooseProductModalProps> = ({
                     'p-0 w-[1060px] max-w-[1060px] min-h-[500px] bg-white overflow-hidden',
                 )}
             >
-                <DialogTitle />
-                <ChoosePizzaForm
-                    imageUrl={product.imageUrl}
-                    ingredients={[]}
-                    name={product.name}
-                    className=""
-                />
+                <DialogTitle className="hidden" />
+                {isPizzaForm ? (
+                    'PizzaForm'
+                ) : (
+                    <ChoosePizzaForm
+                        imageUrl={imageUrl}
+                        ingredients={[]}
+                        name={name}
+                        className=""
+                    />
+                )}
             </DialogContent>
         </Dialog>
     )

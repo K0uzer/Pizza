@@ -29,7 +29,7 @@ const ChoosePizzaForm: FC<ChoosePizzaFormProps> = ({
                 <img
                     src={imageUrl}
                     alt={name}
-                    className="relative left-2 top-2 transition-all z-10 duration-300 w-[400px] h-[400px]"
+                    className=""
                 />
             </div>
             <div className=" flex flex-col w-[490px] bg-[#f7f6f5] p-7">

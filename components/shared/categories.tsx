@@ -3,7 +3,6 @@ import { FC } from 'react'
 import { Category } from '@prisma/client'
 import { useCategoryStore } from '@/store/cateroty'
 import { cn } from '@/lib/utils'
-import Link from 'next/link'
 
 interface Props {
     items: Category[]
@@ -21,7 +20,7 @@ const Categories: FC<Props> = ({ items, className }) => {
             )}
         >
             {items.map(({ id, name }) => (
-                <Link
+                <a
                     className={cn(
                         'flex items-center font-bold h-11 rounded-2xl px-5',
                         categoryActiveId === id &&
@@ -31,7 +30,7 @@ const Categories: FC<Props> = ({ items, className }) => {
                     href={`/#${name}`}
                 >
                     <button>{name}</button>
-                </Link>
+                </a>
             ))}
         </div>
     )
