@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
+import { Api } from '@/shared/services/api-client'
 
-import { Api } from '@/services/api-client'
 import { Ingredient } from '@prisma/client'
 
 const useIngredients = () => {

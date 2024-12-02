@@ -2,7 +2,12 @@ import React from 'react'
 import { notFound } from 'next/navigation'
 import { prisma } from '@/prisma/prisma-client'
 
-import { Container, GroupVariants, ProductImage, Title } from '@/shared'
+import {
+    Container,
+    GroupVariants,
+    ProductImage,
+    Title,
+} from '@/shared/components'
 
 const ProductPage = async ({ params: { id } }: { params: { id: string } }) => {
     const product = await prisma.product.findFirst({
@@ -16,7 +21,7 @@ const ProductPage = async ({ params: { id } }: { params: { id: string } }) => {
     return (
         <Container className="flex flex-col my-10">
             <div className="flex flex-1">
-                <ProductImage imageUrl={product.imageUrl} size={40} />
+                <ProductImage imageUrl={product.imageUrl} />
                 <div className="w-[490px] bg-[#FCFCFC] p-7">
                     <Title
                         text={product.name}

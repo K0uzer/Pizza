@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { ReactNode } from 'react'
 
-import { Header } from '@/shared'
+import { Header } from '@/shared/components'
 
 export const metadata: Metadata = {
     title: 'Delicious Pizza | Главная',
