@@ -2,12 +2,7 @@ import React from 'react'
 import { notFound } from 'next/navigation'
 import { prisma } from '@/prisma/prisma-client'
 
-import {
-    Container,
-    GroupVariants,
-    ProductImage,
-    Title,
-} from '@/components/shared'
+import { Container, GroupVariants, ProductImage, Title } from '@/shared'
 
 const ProductPage = async ({ params: { id } }: { params: { id: string } }) => {
     const product = await prisma.product.findFirst({
