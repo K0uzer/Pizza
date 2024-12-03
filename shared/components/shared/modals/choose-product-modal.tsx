@@ -4,7 +4,13 @@ import { useRouter } from 'next/navigation'
 import { cn } from '@/shared/lib'
 
 import { ProductWithRelations } from '@/@types/prisma'
-import { Dialog, DialogContent, DialogTitle, ChoosePizzaForm, ChooseProductForm } from '@/shared/components'
+import {
+    Dialog,
+    DialogContent,
+    DialogTitle,
+    ChoosePizzaForm,
+    ChooseProductForm,
+} from '@/shared/components'
 
 interface ChooseProductModalProps {
     className?: string
@@ -16,7 +22,7 @@ const ChooseProductModal: FC<ChooseProductModalProps> = ({
     product,
 }) => {
     const router = useRouter()
-    const { imageUrl, name } = product
+    const { imageUrl, name, ingredients } = product
 
     const isProductForm = Boolean(!product.variants[0].pizzaType)
 
@@ -35,7 +41,7 @@ const ChooseProductModal: FC<ChooseProductModalProps> = ({
                     <ChoosePizzaForm
                         imageUrl={imageUrl}
                         name={name}
-                        ingredients={[]}
+                        ingredients={ingredients}
                     />
                 )}
             </DialogContent>

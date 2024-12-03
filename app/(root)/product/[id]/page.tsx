@@ -36,7 +36,7 @@ const ProductPage = async ({ params: { id } }: { params: { id: string } }) => {
                     </p>
 
                     <GroupVariants
-                        selectedValued="2"
+                        value="2"
                         items={[
                             {
                                 name: 'Маленькая',

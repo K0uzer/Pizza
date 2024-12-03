@@ -14,7 +14,7 @@ interface GroupVariantsProps {
     items: readonly Variant[]
     defaultValue?: string
     onClick?: (value: Variant['value']) => void
-    selectedValued?: Variant['value']
+    value?: Variant['value']
 }
 
 export const GroupVariants: FC<GroupVariantsProps> = ({
@@ -22,7 +22,7 @@ export const GroupVariants: FC<GroupVariantsProps> = ({
     items,
     onClick,
     defaultValue,
-    selectedValued,
+    value: selectedValued,
 }) => {
     return (
         <div
